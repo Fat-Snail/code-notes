@@ -7,9 +7,28 @@
 # 知识库
 
 
+## 🚀 部署说明
+
+本项目已配置 GitHub Actions 自动部署，当推送到 `main` 分支时会自动发布到 GitHub Pages。
+
+### 本地开发
+```bash
+# 使用任意 HTTP 服务器运行
+npx serve .
+# 或者
+python -m http.server 8000
+```
+
+### 自动部署
+- 推送代码到 `main` 分支即可触发自动部署
+- 部署完成后可通过 GitHub Pages 设置的地址访问
+
+### 手动部署
+如需手动部署到其他平台，直接上传整个项目文件夹即可。
+
 在线预览地址：
 
-https://pages.github.io/
+https://[your-username].github.io/[your-repo-name]/
 
 😊😊😊
 
