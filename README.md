@@ -28,7 +28,7 @@ python -m http.server 8000
 
 在线预览地址：
 
-https://[your-username].github.io/[your-repo-name]/
+https://fat-snail.github.io/code-notes/
 
 😊😊😊
 
