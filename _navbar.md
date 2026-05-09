@@ -1,4 +1,5 @@
 - [首页](/)
+- [开源项目](documents/open-source.md)
 - [Vue指南](documents/Docs/vue_guide/index.md)
 - [NET后端指南](documents/Docs/dotnet_guide/接口入参出参规范.md)
 - [Linux运维](documents/Docs/linux_guide/)
