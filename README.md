@@ -247,41 +247,6 @@ const submit = () => console.log(content.value)
 NewLife.XCode 个人定制版，针对性修改与功能扩展。
 🔗 [Fat-Snail/X-Mod](https://github.com/Fat-Snail/X-Mod)
 
-### NewLife.XCode ⭐ 1
-ORM 数据中间件，支持 MySQL · SQLite · SQL Server · Oracle · PostgreSQL。
-
-```csharp
-// 零配置 ORM 查询示例
-var list = User.FindAll(User._.Age > 18, User._.CreateTime.Desc(), null, 0, 10);
-var user = User.FindByName("张三");
-
-// 批量插入
-var users = Enumerable.Range(1, 1000).Select(i => new User { Name = $"用户{i}" });
-users.Insert();
-```
-
-🔗 [Fat-Snail/NewLife.XCode](https://github.com/Fat-Snail/NewLife.XCode)
-
-### NewLife.Agent
-将普通应用注册为 Windows / Linux 系统服务，支持开机自启。
-
-```csharp
-class MyService : ServiceBase
-{
-    protected override void StartWork(String reason)
-    {
-        "服务启动".SayHello();
-        // 在此启动你的业务逻辑
-    }
-}
-
-// Program.cs
-var svc = new MyService { ServiceName = "MyApp" };
-svc.Main(args);  // 自动处理 install / start / stop / uninstall
-```
-
-🔗 [Fat-Snail/NewLife.Agent](https://github.com/Fat-Snail/NewLife.Agent)
-
 ---
 
 ## 📖 学习与文档
