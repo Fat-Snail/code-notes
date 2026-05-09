@@ -4,6 +4,9 @@
 >
 > GitHub：[Fat-Snail](https://github.com/Fat-Snail)
 
+**📖 建议通过文档站访问，体验更佳（含侧边栏导航、搜索、代码高亮）：**
+**[https://fat-snail.github.io/code-notes/](https://fat-snail.github.io/code-notes/)**
+
 ---
 
 ## 🐙 OctopusERP ⭐ 2
