@@ -6,50 +6,305 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Fat-Snail 开源项目文档，涵盖 Octopus 系列、AI 应用、网络通信、前端工具等">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- 字体：Inter（界面）+ JetBrains Mono（代码） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <!-- docsify-themeable 基础主题 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+
+  <!-- Prism github 风格代码高亮 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-one-light.min.css">
+
   <style>
     :root {
-      --base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      --base-font-size: 15px;
-      --base-line-height: 1.6;
-      --base-color: #24292f;
+      /* 字体 */
+      --base-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --base-font-size: 15.5px;
+      --base-line-height: 1.7;
+      --base-color: #1f2328;
       --base-background-color: #ffffff;
 
-      --link-color: #0969da;
-      --link-color--hover: #0550ae;
+      /* 主题色：Octopus 紫蓝渐变 */
+      --theme-color: #6366f1;
+      --theme-color-secondary: #8b5cf6;
+      --link-color: #4f46e5;
+      --link-color--hover: #4338ca;
 
-      --sidebar-background: #f6f8fa;
-      --sidebar-border-color: #d0d7de;
-      --sidebar-width: 260px;
-      --sidebar-nav-link-color: #24292f;
-      --sidebar-nav-link-color--active: #0969da;
+      /* 侧边栏 */
+      --sidebar-background: #fafbfc;
+      --sidebar-border-color: transparent;
+      --sidebar-border-width: 0;
+      --sidebar-width: 280px;
+      --sidebar-nav-link-color: #4b5563;
+      --sidebar-nav-link-color--active: #4f46e5;
+      --sidebar-nav-link-color--hover: #1f2328;
       --sidebar-nav-link-font-weight--active: 600;
+      --sidebar-nav-link-padding: 6px 16px;
+      --sidebar-nav-link-margin: 2px 8px;
+      --sidebar-nav-link-border-radius: 6px;
+      --sidebar-nav-link-background-color--active: rgba(99, 102, 241, 0.1);
+      --sidebar-name-color: #4f46e5;
+      --sidebar-name-font-weight: 700;
+      --sidebar-name-font-size: 1.5rem;
 
-      --navbar-background: #ffffff;
-      --navbar-border-color: #d0d7de;
+      /* 顶部导航 */
+      --navbar-background: rgba(255, 255, 255, 0.85);
+      --navbar-border-color: transparent;
+      --navbar-root-color: #4b5563;
+      --navbar-root-color--active: #4f46e5;
+      --navbar-root-color--hover: #1f2328;
 
-      --cover-background-color: #0969da;
+      /* 代码 */
+      --code-font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      --code-font-size: 13.5px;
+      --code-background: rgba(99, 102, 241, 0.08);
+      --code-color: #6366f1;
+      --code-block-background: #fafbfc;
+      --code-block-border-radius: 10px;
+      --code-block-padding: 18px 20px;
 
-      --code-font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-      --code-font-size: 13px;
-      --code-background: #f6f8fa;
-      --code-block-background: #f6f8fa;
-      --code-block-border-radius: 6px;
-      --code-block-padding: 16px;
-      --code-theme-background: #f6f8fa;
-      --code-theme-text: #24292f;
+      /* 引用 */
+      --blockquote-border-color: #6366f1;
+      --blockquote-background: rgba(99, 102, 241, 0.05);
+      --blockquote-color: #4b5563;
+      --blockquote-padding: 12px 20px;
+      --blockquote-border-radius: 0 8px 8px 0;
 
-      --blockquote-border-color: #d0d7de;
-      --blockquote-color: #57606a;
+      /* 表格 */
+      --table-head-background: #fafbfc;
+      --table-cell-border-color: #e5e7eb;
+      --table-cell-border-width: 1px;
 
-      --table-head-background: #f6f8fa;
-      --table-cell-border-color: #d0d7de;
+      /* 标题 */
+      --heading-color: #1f2328;
+      --heading-font-weight: 700;
+      --heading-h1-font-size: 2.2em;
+      --heading-h2-font-size: 1.6em;
+      --heading-h2-border-color: transparent;
+      --heading-h2-border-width: 0;
+      --heading-h3-font-size: 1.2em;
 
-      --heading-h1-font-size: 1.8em;
-      --heading-h2-font-size: 1.4em;
-      --heading-h2-border-color: #d0d7de;
+      /* 内容区 */
+      --content-max-width: 980px;
+
+      /* 滚动按钮 */
+      --search-input-background-color: #ffffff;
+      --search-input-border-color: #e5e7eb;
+      --search-input-border-radius: 8px;
+    }
+
+    /* ===== 全局背景渐变 ===== */
+    body {
+      background:
+        radial-gradient(1200px circle at 0% 0%, rgba(99, 102, 241, 0.06), transparent 40%),
+        radial-gradient(1000px circle at 100% 0%, rgba(139, 92, 246, 0.05), transparent 40%),
+        #ffffff;
+      min-height: 100vh;
+    }
+
+    /* ===== 顶部导航毛玻璃 ===== */
+    .app-nav {
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      box-shadow: 0 1px 0 rgba(31, 35, 40, 0.05);
+    }
+    .app-nav a {
+      transition: color 0.2s ease;
+      font-weight: 500;
+    }
+
+    /* ===== 侧边栏品牌名渐变 ===== */
+    .sidebar > h1 a,
+    .app-name-link {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .sidebar {
+      box-shadow: inset -1px 0 0 rgba(31, 35, 40, 0.06);
+    }
+    .sidebar-nav li > a {
+      transition: all 0.15s ease;
+    }
+    .sidebar-nav li > a:hover {
+      background: rgba(99, 102, 241, 0.06);
+    }
+
+    /* ===== 内容区 H1 渐变标题 ===== */
+    .markdown-section h1 {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    /* ===== H2 项目卡片标题 + 左侧装饰条 ===== */
+    .markdown-section h2 {
+      position: relative;
+      padding-left: 16px;
+      margin-top: 56px;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .markdown-section h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 4px;
+      border-radius: 4px;
+      background: linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%);
+    }
+
+    /* ===== H3 副标题 ===== */
+    .markdown-section h3 {
+      color: #374151;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    /* ===== 分隔线柔化 ===== */
+    .markdown-section hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e5e7eb 20%, #e5e7eb 80%, transparent);
+      margin: 48px 0;
+    }
+
+    /* ===== 链接下划线动效 ===== */
+    .markdown-section a {
+      transition: all 0.15s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .markdown-section a:hover {
+      border-bottom-color: currentColor;
+    }
+    .markdown-section h2 a,
+    .markdown-section h3 a {
+      border-bottom: none !important;
+    }
+
+    /* ===== 代码块阴影 ===== */
+    .markdown-section pre {
+      box-shadow: 0 1px 3px rgba(31, 35, 40, 0.04), 0 0 0 1px rgba(31, 35, 40, 0.06);
+      transition: box-shadow 0.2s ease;
+    }
+    .markdown-section pre:hover {
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08), 0 0 0 1px rgba(99, 102, 241, 0.15);
+    }
+    .markdown-section pre > code {
+      background: transparent !important;
+      font-family: var(--code-font-family);
+    }
+
+    /* ===== 表格圆角 + 阴影 ===== */
+    .markdown-section table {
+      border-radius: 10px;
+      overflow: hidden;
+      border-collapse: separate;
+      border-spacing: 0;
+      box-shadow: 0 1px 3px rgba(31, 35, 40, 0.04), 0 0 0 1px rgba(31, 35, 40, 0.08);
+    }
+    .markdown-section table th {
+      font-weight: 600;
+      color: #1f2328;
+    }
+    .markdown-section table tr:hover {
+      background: rgba(99, 102, 241, 0.03);
+    }
+
+    /* ===== 引用块 ===== */
+    .markdown-section blockquote {
+      border-left-width: 3px;
+    }
+
+    /* ===== 复制按钮美化 ===== */
+    .docsify-copy-code-button {
+      background: rgba(255, 255, 255, 0.9) !important;
+      border: 1px solid #e5e7eb !important;
+      color: #4b5563 !important;
+      border-radius: 6px !important;
+      font-size: 12px !important;
+      padding: 4px 10px !important;
+      transition: all 0.15s ease !important;
+    }
+    .docsify-copy-code-button:hover {
+      border-color: #6366f1 !important;
+      color: #4f46e5 !important;
+    }
+    .docsify-copy-code-button.success {
+      background: #6366f1 !important;
+      color: white !important;
+      border-color: #6366f1 !important;
+    }
+
+    /* ===== 搜索框 ===== */
+    .sidebar .search input {
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(31, 35, 40, 0.04);
+    }
+    .sidebar .search input:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      outline: none;
+    }
+
+    /* ===== 自定义滚动条 ===== */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #e5e7eb;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #cbd5e1;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+
+    /* ===== 分页按钮 ===== */
+    .pagination-item {
+      transition: all 0.15s ease;
+    }
+    .pagination-item:hover {
+      transform: translateY(-1px);
+    }
+
+    /* ===== GitHub 角标 ===== */
+    .github-corner svg {
+      fill: #1f2328;
+      color: #ffffff;
+    }
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out;
+    }
+
+    /* ===== 内容动画 ===== */
+    .markdown-section {
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
+
   <!-- Favicon 配置 -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -75,12 +330,12 @@
       search: {
         maxAge: 86400000,
         paths: 'auto',
-        placeholder: '搜索文档',
+        placeholder: '🔍 搜索文档',
         noData: '找不到结果',
         depth: 6
       },
       copyCode: {
-        buttonText: '复制代码',
+        buttonText: '复制',
         errorText: '复制失败',
         successText: '已复制'
       },
