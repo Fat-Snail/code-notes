@@ -1,4 +1,3 @@
 - [首页](/)
 - [开源项目](documents/open-source.md)
-- [Octopus 系列](#octopus-erp-)
 - [GitHub](https://github.com/Fat-Snail)
