@@ -1,3 +1,5 @@
 - [首页](/)
 - [开源项目](documents/open-source.md)
+- 技术文档
+  - [Supabase](documents/tech/supabase.md)
 - [GitHub](https://github.com/Fat-Snail)

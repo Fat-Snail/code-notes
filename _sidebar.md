@@ -1,3 +1,4 @@
 - [首页](/)
 - [开源项目](documents/open-source.md)
-
+- **技术文档**
+  - [Supabase 全面介绍](documents/tech/supabase.md)
